@@ -18,7 +18,6 @@ export interface LoginRequest {
 export interface LoginResponse {
   token: string;
   user: User;
-  expiresIn: number;
 }
 
 export interface MeResponse {

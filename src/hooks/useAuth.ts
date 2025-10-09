@@ -57,7 +57,6 @@ export const useAuth = () => {
       // Clear local storage
       if (typeof window !== "undefined") {
         localStorage.removeItem("token");
-        localStorage.removeItem("rememberMe");
       }
       
       // Clear Redux state

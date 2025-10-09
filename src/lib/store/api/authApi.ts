@@ -33,12 +33,12 @@ export const authApi = createApi({
       invalidatesTags: ["User"],
     }),
     me: builder.query<MeResponse, void>({
-      query: () => "/auth/me",
+      query: () => "/auth/me", //need to build this route
       providesTags: ["User"],
     }),
     logout: builder.mutation<void, void>({
       query: () => ({
-        url: "/auth/logout",
+        url: "/auth/logout", //need to build this route
         method: "POST",
       }),
       invalidatesTags: ["User"],
