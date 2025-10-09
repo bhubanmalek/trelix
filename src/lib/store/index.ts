@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { rootReducer } from "./rootReducer";
+import { authApi } from "./api/authApi";
 
 const persistConfig = {
   key: "root",
@@ -14,7 +15,9 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefault) =>
-    getDefault({ serializableCheck: false }), // required for redux-persist
+    getDefault({ 
+      serializableCheck: false, // required for redux-persist
+    }).concat(authApi.middleware),
 });
 
 export const persistor = persistStore(store);
