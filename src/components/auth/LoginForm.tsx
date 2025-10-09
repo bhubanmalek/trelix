@@ -5,10 +5,11 @@ import { useAuth } from "@/hooks/useAuth";
 import { useFormHandler } from "@/hooks/useFormHandler";
 import { loginSchema } from "@/schemas/authSchema";
 import type { LoginFormData } from "@/types/auth";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
   const { login, isLoading, error, clearError } = useAuth();
-
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -34,6 +35,8 @@ export default function LoginForm() {
           type: "manual",
           message: result.error,
         });
+      } else {
+        router.push("/");
       }
     },
   });
