@@ -3,6 +3,7 @@ import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { rootReducer } from "./rootReducer";
 import { authApi } from "./api/authApi";
+import { ticketApi } from "./api/ticketApi";
 
 const persistConfig = {
   key: "root",
@@ -17,7 +18,7 @@ export const store = configureStore({
   middleware: (getDefault) =>
     getDefault({ 
       serializableCheck: false, // required for redux-persist
-    }).concat(authApi.middleware),
+    }).concat(authApi.middleware, ticketApi.middleware),
 });
 
 export const persistor = persistStore(store);
